@@ -26,7 +26,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.students = require('./student.model')(sequelize, DataTypes);
+db.students = require('./studentModel.js')(sequelize, DataTypes);
 
 
 db.Sequelize.sync ({force: false})
