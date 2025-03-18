@@ -1,6 +1,6 @@
 const dbConfig = require('../config/dbConfig')
 
-const {Sequelize, DataTypes} = require('sequelize')
+const {Sequelize, DataTypes} = require('sequelize')//Sequalize is like mongoose 
 
 
 const sequelize = new Sequelize(
@@ -10,7 +10,7 @@ const sequelize = new Sequelize(
     {
         host: dbConfig.HOST,
         dialect: dbConfig.dialect,
-        operatorsAliases: false
+        operatorsAliases: false 
     }
 )
 
@@ -29,7 +29,7 @@ db.sequelize = sequelize;
 db.students = require('./studentModel.js')(sequelize, DataTypes);
 
 
-db.Sequelize.sync ({force: false})
+db.Sequelize.sync ({force: false})//If u set to true its going to refresh and this clears all data in the database
 .then(() => {
     console.log('re-sync done');
 })
