@@ -11,8 +11,13 @@ var corOptions = {
 
 app.use(cors(corOptions))
 
+const StudentRoutes = require('./routes/studentRoutes');
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+
+
+app.use('/Student', StudentRoutes);
 
 //Error handling MiddleWare
 

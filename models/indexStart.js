@@ -32,7 +32,7 @@ db.sequelize = sequelize;
 db.students = require('./studentModel.js')(sequelize, DataTypes);//This the part connectin gus to the model
 
 
-db.Sequelize.sync ({force: false})//If u set to true its going to refresh and this clears all data in the database
+db.sequelize.sync ({force: false})//If u set to true its going to refresh and this clears all data in the database
 .then(() => {
     console.log('re-sync done');
 })
