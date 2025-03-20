@@ -46,6 +46,29 @@ module.exports = {
       next(error);
     }
   },
-Update 
-  //
+
+  //Update
+  UpdateStudent: async (req, res, next) => {
+    try {
+      let id = req.params.id;
+      const student = await Student.findOne({ where: { student_id: id } });
+      if (!student) {
+        throw createError(404, "Student does not exist");
+      }
+      res.status(202).send(student);
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  //Delete
+  deleteStudent: async (req, res, next) => {
+    try{
+      let id = req.params.id;
+      await Student.destroy({where: {student_id: id}})
+      res.status(202).send("Student deleted succesfuly")
+    }catch(error){
+      next(error)
+    }
+  }
 };
