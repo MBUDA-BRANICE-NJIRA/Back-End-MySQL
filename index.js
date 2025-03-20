@@ -14,6 +14,19 @@ app.use(cors(corOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+//Error handling MiddleWare
+
+app.use((err, req, next) => {
+    if(err.status ===404){
+        //Handling 401 unauthorized error
+        res.status(401).send({
+            error: {
+                status: 401,
+                message: 'NUnauthorized:Invalide user password',
+            }
+        });
+    }
+})
 
 
 const PORT = process.env.PORT || 3000
