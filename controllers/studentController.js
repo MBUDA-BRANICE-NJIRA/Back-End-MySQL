@@ -3,7 +3,7 @@ const createError = require("http-errors");
 
 //use the model
 const Student = db.students;
-// const Course = db.courses
+const Course = db.courses
 
 module.exports = {
   //Add student
