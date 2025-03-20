@@ -2,6 +2,9 @@ const dbConfig = require('../config/dbConfig')
 
 const {Sequelize, DataTypes} = require('sequelize')//Sequalize is like mongoose 
 
+//We create an object from sequilize
+
+
 
 const sequelize = new Sequelize(
     dbConfig.DB,
@@ -10,9 +13,9 @@ const sequelize = new Sequelize(
     {
         host: dbConfig.HOST,
         dialect: dbConfig.dialect,
-        operatorsAliases: false 
+        operatorsAliases: false //If errors in your code will overwrite the errors using this line
     }
-)
+);
 
 sequelize.authenticate()
 .then(() => {
@@ -20,13 +23,13 @@ sequelize.authenticate()
 })
 .catch(err => {
     console.log('Error' + err);
-})
+});
 
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.students = require('./studentModel.js')(sequelize, DataTypes);
+db.students = require('./studentModel.js')(sequelize, DataTypes);//This the part connectin gus to the model
 
 
 db.Sequelize.sync ({force: false})//If u set to true its going to refresh and this clears all data in the database
