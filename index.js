@@ -25,6 +25,14 @@ app.use((err, req, next) => {
                 message: 'NUnauthorized:Invalide user password',
             }
         });
+    }else{
+        //Handling Other error
+        res.status(err.status || 500).send({
+            error: {
+                status: err.status || 500,
+                message: err.message || 'Internal Server Error',
+            }
+        })
     }
 })
 
