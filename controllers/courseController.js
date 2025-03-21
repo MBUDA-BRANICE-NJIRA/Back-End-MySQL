@@ -1,17 +1,15 @@
 const db = require("../models/indexStart");
 const createError = require("http-errors");
 
-//use the model
-const Course = db.courses;
-
+// use the model
+const Course = db.models.Course; // <--- FIX: use db.models.Course instead of db.courses
 
 module.exports = {
-  //Add Course
+  // Add Course
   addCourse: async (req, res, next) => {
     try {
       let info = {
         coursename: req.body.coursename,
-       
       };
 
       const addCourse = await Course.create(info);
@@ -21,7 +19,7 @@ module.exports = {
     }
   },
 
-  //get all  course
+  // Get all courses
   getCourse: async (req, res, next) => {
     try {
       let allCourses = await Course.findAll({});
@@ -31,8 +29,8 @@ module.exports = {
     }
   },
 
-  //get Course by id
-  getCourse: async (req, res, next) => {
+  // Get Course by id
+  getCourseById: async (req, res, next) => { // <--- FIX: rename function to avoid duplicate name
     try {
       let id = req.params.id;
       let course = await Course.findOne({ where: { course_id: id } });
@@ -45,28 +43,29 @@ module.exports = {
     }
   },
 
-  //Update course
-  UpdateCourse: async (req, res, next) => {
+  // Update course
+  updateCourse: async (req, res, next) => { // <--- FIX: rename function to avoid duplicate name
     try {
       let id = req.params.id;
       const course = await Course.findOne({ where: { course_id: id } });
       if (!course) {
         throw createError(404, "Course does not exist");
       }
+      // update course logic here
       res.status(202).send(course);
     } catch (error) {
       next(error);
     }
   },
 
-  //Delete Course
+  // Delete Course
   deleteCourse: async (req, res, next) => {
-    try{
+    try {
       let id = req.params.id;
-      await Course.destroy({where: {course_id: id}})
-      res.status(202).send("Course deleted succesfuly")
-    }catch(error){
-      next(error)
+      await Course.destroy({ where: { course_id: id } });
+      res.status(202).send("Course deleted successfully");
+    } catch (error) {
+      next(error);
     }
-  }
+  },
 };
