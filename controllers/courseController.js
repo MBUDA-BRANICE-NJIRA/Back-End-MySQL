@@ -39,32 +39,32 @@ module.exports = {
       if (!course) {
         throw createError(404, "Course does not exist");
       }
-      res.status(200).send(student);
+      res.status(200).send(course);
     } catch (error) {
       next(error);
     }
   },
 
-  //Update
-  UpdateStudent: async (req, res, next) => {
+  //Update course
+  UpdateCourse: async (req, res, next) => {
     try {
       let id = req.params.id;
-      const student = await Student.findOne({ where: { student_id: id } });
-      if (!student) {
-        throw createError(404, "Student does not exist");
+      const course = await Course.findOne({ where: { course_id: id } });
+      if (!course) {
+        throw createError(404, "Course does not exist");
       }
-      res.status(202).send(student);
+      res.status(202).send(course);
     } catch (error) {
       next(error);
     }
   },
 
-  //Delete
-  deleteStudent: async (req, res, next) => {
+  //Delete Course
+  deleteCourse: async (req, res, next) => {
     try{
       let id = req.params.id;
-      await Student.destroy({where: {student_id: id}})
-      res.status(202).send("Student deleted succesfuly")
+      await Course.destroy({where: {course_id: id}})
+      res.status(202).send("Course deleted succesfuly")
     }catch(error){
       next(error)
     }
