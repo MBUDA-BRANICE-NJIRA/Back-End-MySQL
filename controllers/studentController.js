@@ -13,7 +13,7 @@ module.exports = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         gender: req.body.gender,
-        //course_id: req.body.course_id
+        course_id: req.body.course_id
       };
 
       const addStudent = await Student.create(info);
