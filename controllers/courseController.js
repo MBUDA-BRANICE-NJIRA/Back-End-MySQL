@@ -2,7 +2,7 @@ const db = require("../models/indexStart");
 const createError = require("http-errors");
 
 //use the model
-const Course = db.course;
+const Course = db.courses;
 
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   //get all  course
-  getCourse: async (req, res, next) => {
+  getAllCourses: async (req, res, next) => {
     try {
       let allCourses = await Course.findAll({});
       res.status(200).send(allCourses);
