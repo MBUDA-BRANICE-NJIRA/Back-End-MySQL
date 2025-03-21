@@ -29,8 +29,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.students = require('./studentModel.js')(sequelize, DataTypes);//This the part connectin gus to the model
-db.courses = require('./courseModel.js')(sequelize, DataTypes);//This the part connecting
+db.students = require('./studentModel.js')(sequelize, DataTypes);//This the part connectin us to the model
+db.courses = require('./courseModel.js')(sequelize, DataTypes);//This the part connecting us to the model
 
 
 db.sequelize.sync ({force: false})//If u set to true its going to refresh and this clears all data in the database
