@@ -2,12 +2,12 @@ const db = require("../models/indexStart");
 const createError = require("http-errors");
 
 //use the model
-const Student = db.students;
-//const Course = db.courses
+const Course = db.Course;
+
 
 module.exports = {
-  //Add student
-  addStudent: async (req, res, next) => {
+  //Add Course
+  addCourse: async (req, res, next) => {
     try {
       let info = {
         firstname: req.body.firstname,
