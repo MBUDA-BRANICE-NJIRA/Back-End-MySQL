@@ -11,12 +11,15 @@ var corOptions = {
 
 app.use(cors(corOptions))
 
+//Importation of Routes section by giving it a constant
 const StudentRoutes = require('./routes/studentRoutes');
+const CourseRoutes = require('./routes/courseRoutes');
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 
-
+//Use of the Routes
 app.use('/Student', StudentRoutes);
 app.use('/Course' , CourseRoutes);
 
