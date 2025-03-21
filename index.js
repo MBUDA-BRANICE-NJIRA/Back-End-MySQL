@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.use('/Student', StudentRoutes);
+app.use('/Course' , CourseRoutes);
 
 
 //Error handling MiddleWare
