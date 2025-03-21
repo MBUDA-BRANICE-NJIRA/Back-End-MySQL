@@ -3,7 +3,7 @@ const routes = express.Router();
 const courseController = require('../controllers/courseController');
 
 // Get all Courses
-routes.get('/getAllCourses', courseController.getAllCourses);
+routes.get('/getAllCourses', courseController.getCourse);
 
 // Add a student
 routes.post('/addCourse', courseController.addCourse);

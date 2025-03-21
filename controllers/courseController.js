@@ -2,7 +2,7 @@ const db = require("../models/indexStart");
 const createError = require("http-errors");
 
 //use the model
-const Course = db.Course;
+const Course = db.courses;
 
 
 module.exports = {
