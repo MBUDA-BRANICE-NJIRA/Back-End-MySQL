@@ -26,7 +26,9 @@ module.exports = {
   //get all students with course
   getStudents: async (req, res, next) => {
     try {
-      let allStudents = await Student.findAll({});
+      let allStudents = await Student.findAll({
+        include:[{model: Course, attributes:['coursename']}]//This the part creating a relationship the model
+      });
       res.status(200).send(allStudents);
     } catch (error) {
       next(error);
