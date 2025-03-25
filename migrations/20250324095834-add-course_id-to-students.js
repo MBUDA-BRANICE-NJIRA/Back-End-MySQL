@@ -1,22 +1,18 @@
-'use strict';
+"use strict";
+
+const { QueryInterface } = require("sequelize");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
+  up: async (QueryInterface, Sequelize) => {
+    await QueryInterface.addColumn("students", "course_id", {
+      type: Sequelize.DataTypes.STRING,
+      allowNull: true, //Adjust as needed
+      after: "student_id",
+    });
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
-  }
+  down: async (QueryInterface, Sequelize) => {
+    await QueryInterface.removeColumn("students", "course_id");
+  },
 };
