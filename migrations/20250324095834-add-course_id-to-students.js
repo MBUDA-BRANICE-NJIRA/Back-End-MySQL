@@ -6,7 +6,7 @@ const { QueryInterface } = require("sequelize");
 module.exports = {
   up: async (QueryInterface, Sequelize) => {
     await QueryInterface.addColumn("students", "course_id", {
-      type: Sequelize.DataTypes.STRING,
+      type: Sequelize.DataTypes.INTEGER,
       allowNull: true, //Adjust as needed
       after: "student_id",
     });
