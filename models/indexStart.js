@@ -36,6 +36,10 @@ db.courses = require('./courseModel.js')(sequelize, DataTypes);//This the part c
 db.sequelize.sync ({force: false})//If u set to true its going to refresh and this clears all data in the database
 .then(() => {
     console.log('re-sync done');
-})
+});
+
+//This the section responsible for creating the foreign null section in the database
+db.courses.hasOne(db.students, { foreignKey: 'course_id' });
+db.students.belongsTo(db.courses, { foreignKey: 'course_id' });
 
 module.exports = db
